@@ -26,7 +26,7 @@ export class ShortenURLUseCase {
         if (url) {
             if (expiryVerifier.isValid(url.creationDate)) {
                 // compose the url to send as response
-                return urlComposer.compose(url.id, process.env.APP_URL);
+                return urlComposer.compose(url.id, environmentContext.getHostname());
             } else {
                 await this.urlsRepository.delete(url.id);
             }

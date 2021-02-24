@@ -27,17 +27,17 @@ Acessando o endpoint de uma URL reduzida existente, a aplicação irá redirecio
 # Uso
 ## Ambiente de Desenvolvimento
 1. Rode o comando `npm i`
-2. Rode o comando `docker-composer up -d` para subir a imagem do postgresSQL para desenvolvimento
-3. Rode o comando `npm start`
+2. Rode o comando `docker-compose up -d` para subir a imagem do postgresSQL para desenvolvimento
+3. Rode o comando `npm run dev`
 
-A aplicação iniciará na porta 8081. Esse valor pode ser mudado através  de uma variável  de ambiente ou pelo arquivo de configuração  em um arquivo `.env`
+A aplicação iniciará na porta 8081. Esse valor pode ser mudado através  de uma variável  de ambiente ou pelo arquivo de configuração em um `.env`
 
 Com a aplicação rodando, é possível acessar sua documentação em: `http://localhost:8081/api-docs/` (apenas em ambiente de desenvolvimento)
 
 Para rodar os testes, use o comando `npx jest`
 
-## Ambiente de Producao
-A versão `live` da aplicação está disponível em: `https://salty-wave-75044.herokuapp.com/`. A estratégia de deploy foi dockerizar apenas a aplicação e subir o contêiner para o `heroku`, acessando uma instância do `Heroku Postgres` como banco de dados de produção.
+## Ambiente Live
+A versão `live` da aplicação está disponível em: `https://hferr-url-shortner-api.herokuapp.com/`. A estratégia de deploy foi dockerizar apenas a aplicação e subir o contêiner para o `heroku`, acessando uma instância do `Heroku Postgres` como banco de dados de produção.
 
 # Endpoints
 

@@ -17,7 +17,6 @@ export class PostgresUrlsRepository implements IURLRepository {
     }
 
     async findByOriginalUrl(originalUrl: string): Promise<URL> {
-        console.log("hits findByOriginalUrl")
         return await getManager().findOne(URL, { originalUrl: originalUrl});
     }
 }

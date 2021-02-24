@@ -27,6 +27,6 @@ connectToDb();
 
 // Configure Routes
 app.use(route);
-app.use('/', (req, res) => res.redirect('/api-docs'));
+app.use('/', (req, res) => res.send('API for the shorten URL service'));
 
 export { app }

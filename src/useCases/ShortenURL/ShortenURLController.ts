@@ -9,7 +9,6 @@ export class ShortenURLController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { url } = request.body;
         try {
-            console.log(url);
             var newUrl = await this.shortenURLUseCase.execute(url);
             return response.status(201).json({
                 newUrl: newUrl
