@@ -1,0 +1,114 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Encurtador de URL",
+        "description": "API do serviço para encurtar URLs",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/encurtador": {
+            "post": {
+                "tags": [
+                    {
+                        "name": "Encurtador"
+                    }
+                ],
+                "description": "Encurta a url fornecida e a devolve na resposta",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "body",
+                        "description": "Url a ser encurtada",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string",
+                                    "example": "www.google.com.br"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "A url encurtada foi criada com sucesso e o novo valor foi devolvido",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "newUrl": {
+                                    "type": "string",
+                                    "example": "http://localhost:8080/zXt234ty"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Um erro occoreu ao tentar encurtar a url",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "An unexpected error occurred"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{id}": {
+            "get": {
+                "tags": [
+                    {
+                        "name": "Obter URL"
+                    }
+                ],
+                "description": "Recebe como parametro a URL encurtada, caso ela exista, redireciona para a pagina da url original",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": "true",
+                        "description": "Valor da URL encurtada",
+                        "schema": {
+                            "type": "string",
+                            "example": "zXt234ty"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "301": {
+                        "description": "Redireciona para a URL original"
+                    },
+                    "404": {
+                        "description": "URL nao foi encontrada"
+                    },
+                    "400": {
+                        "description": "Um erro occoreu ao tentar buscar a url",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "An unexpected error occurred"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+}
